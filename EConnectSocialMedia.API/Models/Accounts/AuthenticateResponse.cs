@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace EConnectSocialMedia.API.Models.Accounts
+namespace GangstersAPP.API.Models.Accounts
 {
     public class AuthenticateResponse
     {

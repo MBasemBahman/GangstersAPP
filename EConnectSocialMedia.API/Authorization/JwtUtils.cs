@@ -4,7 +4,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace EConnectSocialMedia.API.Authorization
+namespace GangstersAPP.API.Authorization
 {
     public interface IJwtUtils
     {

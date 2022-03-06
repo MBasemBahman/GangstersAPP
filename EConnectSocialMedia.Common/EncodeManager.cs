@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Common
+﻿namespace GangstersAPP.Common
 {
     public static class EncodeManager
     {

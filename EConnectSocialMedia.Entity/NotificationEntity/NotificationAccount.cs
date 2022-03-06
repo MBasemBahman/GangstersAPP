@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.NotificationEntity
+﻿namespace GangstersAPP.Entity.NotificationEntity
 {
     public class NotificationAccount : BaseEntity
     {

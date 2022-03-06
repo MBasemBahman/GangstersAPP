@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity
+﻿namespace GangstersAPP.Entity
 {
     public static class EntityEnum
     {

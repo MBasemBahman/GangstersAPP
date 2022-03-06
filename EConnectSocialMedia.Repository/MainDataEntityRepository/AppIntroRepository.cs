@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.MainDataEntityRepository
+﻿namespace GangstersAPP.Repository.MainDataEntityRepository
 {
     public class AppIntroRepository : AppBaseRepository<AppIntro>
     {

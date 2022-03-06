@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
-using static EConnectSocialMedia.Entity.EntityEnum;
+using static GangstersAPP.Entity.EntityEnum;
 using BC = BCrypt.Net.BCrypt;
-namespace EConnectSocialMedia.Repository.AuthEntityRepository
+namespace GangstersAPP.Repository.AuthEntityRepository
 {
     public class SystemUserRepository : AppBaseRepository<SystemUser>
     {

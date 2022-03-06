@@ -1,5 +1,5 @@
 ﻿
-namespace EConnectSocialMedia.Common
+namespace GangstersAPP.Common
 {
     public class ExcelManager
     {

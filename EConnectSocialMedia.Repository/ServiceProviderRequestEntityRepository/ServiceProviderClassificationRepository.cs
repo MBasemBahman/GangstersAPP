@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.ServiceProviderRequestEntityRepository
+﻿namespace GangstersAPP.Repository.ServiceProviderRequestEntityRepository
 {
     public class ServiceProviderClassificationRepository : AppBaseRepository<ServiceProviderClassification>
     {

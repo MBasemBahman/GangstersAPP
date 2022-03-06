@@ -1,6 +1,6 @@
-﻿using EConnectSocialMedia.Entity.LocationEntity;
+﻿using GangstersAPP.Entity.LocationEntity;
 
-namespace EConnectSocialMedia.Entity.ServiceProviderRequestEntity
+namespace GangstersAPP.Entity.ServiceProviderRequestEntity
 {
     public class ServiceProviderRequest : FullBaseEntity
     {

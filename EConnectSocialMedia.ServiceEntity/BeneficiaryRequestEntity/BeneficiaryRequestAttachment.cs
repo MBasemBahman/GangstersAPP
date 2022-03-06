@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.ServiceEntity.BeneficiaryRequestEntity
+﻿namespace GangstersAPP.ServiceEntity.BeneficiaryRequestEntity
 {
     public class BeneficiaryRequestAttachmentCreateModel
     {

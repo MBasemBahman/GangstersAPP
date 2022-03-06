@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.AccountEntity
+﻿namespace GangstersAPP.Entity.AccountEntity
 {
     [Index(nameof(NotificationToken), IsUnique = true)]
     public class AccountDevice : BaseEntity

@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.AuthEntity
+﻿namespace GangstersAPP.Entity.AuthEntity
 {
     [Index(nameof(Email), IsUnique = true)]
     public class SystemUser : FullBaseEntity

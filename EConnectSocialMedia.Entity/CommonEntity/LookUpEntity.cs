@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace EConnectSocialMedia.Entity.CommonEntity
+namespace GangstersAPP.Entity.CommonEntity
 {
     public interface ILookUpEntity
     {

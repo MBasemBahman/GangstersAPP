@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.ServiceEntity.MainDataEntity
+﻿namespace GangstersAPP.ServiceEntity.MainDataEntity
 {
     public class AppIntroModel : FullImageEntityModel
     {

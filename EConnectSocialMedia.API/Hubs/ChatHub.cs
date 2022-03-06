@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Hubs
+﻿namespace GangstersAPP.API.Hubs
 {
     public class ChatHub : Hub
     {

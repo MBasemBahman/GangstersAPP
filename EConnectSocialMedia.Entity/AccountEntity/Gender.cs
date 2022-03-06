@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.AccountEntity
+﻿namespace GangstersAPP.Entity.AccountEntity
 {
     public class Gender : StateEntity
     {

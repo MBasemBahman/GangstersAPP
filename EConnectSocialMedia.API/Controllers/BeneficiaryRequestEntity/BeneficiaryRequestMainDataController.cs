@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Controllers.BeneficiaryRequestEntity
+﻿namespace GangstersAPP.API.Controllers.BeneficiaryRequestEntity
 {
     [Authorize]
     [ApiController]

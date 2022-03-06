@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.ServiceEntity
+﻿namespace GangstersAPP.ServiceEntity
 {
     public static class OrderBy<T>
     {

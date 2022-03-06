@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.BeneficiaryRequestEntity
+﻿namespace GangstersAPP.Entity.BeneficiaryRequestEntity
 {
     public class BeneficiaryType : FullLookUpEntity
     {

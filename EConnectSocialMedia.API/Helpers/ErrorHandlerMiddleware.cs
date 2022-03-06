@@ -1,4 +1,4 @@
-namespace EConnectSocialMedia.API.Helpers
+namespace GangstersAPP.API.Helpers
 {
     public class ErrorHandlerMiddleware
     {

@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.ServiceEntity.CommonEntity
+﻿namespace GangstersAPP.ServiceEntity.CommonEntity
 {
     public class BaseEntityModel
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace EConnectSocialMedia.ServiceEntity.PostEntity
+namespace GangstersAPP.ServiceEntity.PostEntity
 {
     public class PostCommentReactionCreateModel
     {

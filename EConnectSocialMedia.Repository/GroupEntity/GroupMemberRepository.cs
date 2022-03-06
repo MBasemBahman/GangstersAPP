@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.GroupEntity
+﻿namespace GangstersAPP.Repository.GroupEntity
 {
     public class GroupMemberRepository : AppBaseRepository<GroupMember>
     {

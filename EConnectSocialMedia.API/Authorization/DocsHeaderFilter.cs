@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Controllers;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace EConnectSocialMedia.API.Authorization
+namespace GangstersAPP.API.Authorization
 {
     public class DocsHeaderFilter : IOperationFilter
     {

@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.PostEntity
+﻿namespace GangstersAPP.Repository.PostEntity
 {
     public class ReactionTypeRepository : AppBaseRepository<ReactionType>
     {

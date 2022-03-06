@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EConnectSocialMedia.API", "EConnectSocialMedia.API\EConnectSocialMedia.API.csproj", "{7001D632-8B5E-4486-93CC-9C8D9A7DB66C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GangstersAPP.API", "EConnectSocialMedia.API\GangstersAPP.API.csproj", "{7001D632-8B5E-4486-93CC-9C8D9A7DB66C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{707F1FF3-CBEF-462C-93AF-F6F09755D2BA}"
 EndProject
@@ -13,17 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entity", "Entity", "{4C9007
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{16070FD8-591F-456B-98DF-8738E90A9FE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EConnectSocialMedia.Common", "EConnectSocialMedia.Common\EConnectSocialMedia.Common.csproj", "{EEDFD794-6952-482A-858B-2E42AC9437DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GangstersAPP.Common", "EConnectSocialMedia.Common\GangstersAPP.Common.csproj", "{EEDFD794-6952-482A-858B-2E42AC9437DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EConnectSocialMedia.DAL", "EConnectSocialMedia.DAL\EConnectSocialMedia.DAL.csproj", "{B42F8820-1E5C-451A-8037-1DA4B8992417}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GangstersAPP.DAL", "EConnectSocialMedia.DAL\GangstersAPP.DAL.csproj", "{B42F8820-1E5C-451A-8037-1DA4B8992417}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EConnectSocialMedia.Entity", "EConnectSocialMedia.Entity\EConnectSocialMedia.Entity.csproj", "{10DDD5CE-EAD4-4E9C-8BF8-C0021A80ACD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GangstersAPP.Entity", "EConnectSocialMedia.Entity\GangstersAPP.Entity.csproj", "{10DDD5CE-EAD4-4E9C-8BF8-C0021A80ACD7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EConnectSocialMedia.Repository", "EConnectSocialMedia.Repository\EConnectSocialMedia.Repository.csproj", "{5B977E2A-DC5D-4E58-8941-1D195DC19CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GangstersAPP.Repository", "EConnectSocialMedia.Repository\GangstersAPP.Repository.csproj", "{5B977E2A-DC5D-4E58-8941-1D195DC19CA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EConnectSocialMedia.ServiceEntity", "EConnectSocialMedia.ServiceEntity\EConnectSocialMedia.ServiceEntity.csproj", "{B919BE86-8EE3-45C9-931F-73540A6A7850}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EConnectSocialMedia.AdminPanel", "EConnectSocialMedia.AdminPanel\EConnectSocialMedia.AdminPanel.csproj", "{2FF6D7EB-5F2B-4DF7-9B37-716DB103670A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GangstersAPP.ServiceEntity", "EConnectSocialMedia.ServiceEntity\GangstersAPP.ServiceEntity.csproj", "{B919BE86-8EE3-45C9-931F-73540A6A7850}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +53,6 @@ Global
 		{B919BE86-8EE3-45C9-931F-73540A6A7850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B919BE86-8EE3-45C9-931F-73540A6A7850}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B919BE86-8EE3-45C9-931F-73540A6A7850}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2FF6D7EB-5F2B-4DF7-9B37-716DB103670A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2FF6D7EB-5F2B-4DF7-9B37-716DB103670A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2FF6D7EB-5F2B-4DF7-9B37-716DB103670A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2FF6D7EB-5F2B-4DF7-9B37-716DB103670A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

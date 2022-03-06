@@ -1,7 +1,7 @@
-﻿using EConnectSocialMedia.ServiceEntity.LocationEntity;
-using EConnectSocialMedia.ServiceEntity.ServiceProviderRequestEntity;
+﻿using GangstersAPP.ServiceEntity.LocationEntity;
+using GangstersAPP.ServiceEntity.ServiceProviderRequestEntity;
 
-namespace EConnectSocialMedia.Repository
+namespace GangstersAPP.Repository
 {
     public class Mapping : Profile
     {

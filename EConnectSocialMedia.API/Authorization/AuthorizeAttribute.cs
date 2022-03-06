@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Filters;
-namespace EConnectSocialMedia.API.Authorization
+namespace GangstersAPP.API.Authorization
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AuthorizeAttribute : Attribute, IAuthorizationFilter

@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.CHIAEntity
+﻿namespace GangstersAPP.Entity.CHIAEntity
 {
     public class UserFullinfoItem : FullBaseEntity
     {

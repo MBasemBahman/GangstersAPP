@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EConnectSocialMedia.DAL.Migrations
+namespace GangstersAPP.DAL.Migrations
 {
     public partial class jjhh : Migration
     {

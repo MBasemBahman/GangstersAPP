@@ -1,6 +1,6 @@
-﻿using static EConnectSocialMedia.Entity.EntityEnum;
+﻿using static GangstersAPP.Entity.EntityEnum;
 
-namespace EConnectSocialMedia.Repository.ChatEntity
+namespace GangstersAPP.Repository.ChatEntity
 {
     public class ChatRepository : AppBaseRepository<Chat>
     {

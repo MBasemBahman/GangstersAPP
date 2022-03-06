@@ -1,7 +1,7 @@
-﻿using EConnectSocialMedia.Entity.BeneficiaryRequestEntity;
-using EConnectSocialMedia.Entity.ServiceProviderRequestEntity;
+﻿using GangstersAPP.Entity.BeneficiaryRequestEntity;
+using GangstersAPP.Entity.ServiceProviderRequestEntity;
 
-namespace EConnectSocialMedia.Entity.AccountEntity
+namespace GangstersAPP.Entity.AccountEntity
 {
     [Index(nameof(Phone), IsUnique = true)]
     public class Account : FullImageEntity

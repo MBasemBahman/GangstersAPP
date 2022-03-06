@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.ChatEntity
+﻿namespace GangstersAPP.Entity.ChatEntity
 {
     public class ChatType : FullStateEntity
     {

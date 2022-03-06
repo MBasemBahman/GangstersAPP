@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.CommonEntity
+﻿namespace GangstersAPP.Entity.CommonEntity
 {
     public interface IImageEntity
     {

@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.AccountEntityRepository
+﻿namespace GangstersAPP.Repository.AccountEntityRepository
 {
     public class AccountTypeRepository : AppBaseRepository<AccountType>
     {

@@ -1,4 +1,4 @@
-namespace EConnectSocialMedia.API.Authorization
+namespace GangstersAPP.API.Authorization
 {
     public class JwtMiddleware
     {

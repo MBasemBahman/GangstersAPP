@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Controllers.CHIAEntity
+﻿namespace GangstersAPP.API.Controllers.CHIAEntity
 {
     [Authorize]
     [ApiController]
@@ -99,16 +99,16 @@
 
             try
             {
-                IQueryable<EConnectSocialMedia.Entity.CHIAEntity.ServiceProvider> Data = _UnitOfWork.ServiceProvider.GetQuery(a => (Fk_ServiceProviderCategory == 0 || a.Fk_ServiceProviderCategory == Fk_ServiceProviderCategory)
+                IQueryable<GangstersAPP.Entity.CHIAEntity.ServiceProvider> Data = _UnitOfWork.ServiceProvider.GetQuery(a => (Fk_ServiceProviderCategory == 0 || a.Fk_ServiceProviderCategory == Fk_ServiceProviderCategory)
                                                                                            && (Fk_ServiceProviderAuthority == 0 || a.Fk_ServiceProviderAuthority == Fk_ServiceProviderAuthority)
                                                                                            && (string.IsNullOrEmpty(Search) ||
                                                                                                  a.Name.ToLower().Contains(Search.ToLower()))
                                                                                               , new List<string> { "ServiceProviderCategory", "ServiceProviderAuthority" });
 
 
-                Data = OrderBy<EConnectSocialMedia.Entity.CHIAEntity.ServiceProvider>.OrderData(Data, paging.OrderBy);
+                Data = OrderBy<GangstersAPP.Entity.CHIAEntity.ServiceProvider>.OrderData(Data, paging.OrderBy);
 
-                PagedList<EConnectSocialMedia.Entity.CHIAEntity.ServiceProvider> PagedData = PagedList<EConnectSocialMedia.Entity.CHIAEntity.ServiceProvider>.Create(Data, paging.PageNumber, paging.PageSize);
+                PagedList<GangstersAPP.Entity.CHIAEntity.ServiceProvider> PagedData = PagedList<GangstersAPP.Entity.CHIAEntity.ServiceProvider>.Create(Data, paging.PageNumber, paging.PageSize);
 
                 if (Culture.ToLower() == "en")
                 {
@@ -131,7 +131,7 @@
                     _Mapper.Map(PagedData[i].ServiceProviderAuthority, returnData[i].ServiceProviderAuthority);
                 }
 
-                Response.Headers.Add("X-Pagination", StatusHandler<EConnectSocialMedia.Entity.CHIAEntity.ServiceProvider>.GetPagination(PagedData, paging, ActionName));
+                Response.Headers.Add("X-Pagination", StatusHandler<GangstersAPP.Entity.CHIAEntity.ServiceProvider>.GetPagination(PagedData, paging, ActionName));
 
                 Status = new Status(true);
             }

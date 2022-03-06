@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Services
+﻿namespace GangstersAPP.API.Services
 {
     public class EntityLocalizationService
     {

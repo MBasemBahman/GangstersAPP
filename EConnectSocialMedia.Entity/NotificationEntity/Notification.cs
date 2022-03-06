@@ -1,6 +1,6 @@
-﻿using static EConnectSocialMedia.Entity.EntityEnum;
+﻿using static GangstersAPP.Entity.EntityEnum;
 
-namespace EConnectSocialMedia.Entity.NotificationEntity
+namespace GangstersAPP.Entity.NotificationEntity
 {
     public class Notification : FullImageEntity
     {

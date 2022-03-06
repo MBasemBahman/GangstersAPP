@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository
+﻿namespace GangstersAPP.Repository
 {
     public class BaseRepository<T> : AppBaseRepository<T> where T : class
     {

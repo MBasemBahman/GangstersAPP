@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.ServiceEntity.GroupEntity
+﻿namespace GangstersAPP.ServiceEntity.GroupEntity
 {
     public class GroupTypeModel : FullStateEntityModel
     {

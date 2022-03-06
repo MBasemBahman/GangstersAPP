@@ -1,7 +1,7 @@
-﻿using EConnectSocialMedia.Entity.ServiceProviderRequestEntity;
-using EConnectSocialMedia.ServiceEntity.ServiceProviderRequestEntity;
+﻿using GangstersAPP.Entity.ServiceProviderRequestEntity;
+using GangstersAPP.ServiceEntity.ServiceProviderRequestEntity;
 
-namespace EConnectSocialMedia.API.Controllers.ServiceProviderRequestEntity
+namespace GangstersAPP.API.Controllers.ServiceProviderRequestEntity
 {
     [Authorize]
     [ApiController]

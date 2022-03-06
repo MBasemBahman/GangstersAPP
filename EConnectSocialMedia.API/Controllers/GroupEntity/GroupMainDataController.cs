@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Controllers.GroupEntity
+﻿namespace GangstersAPP.API.Controllers.GroupEntity
 {
     [Authorize]
     [ApiController]

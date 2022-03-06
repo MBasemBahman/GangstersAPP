@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.LocationEntityRepository
+﻿namespace GangstersAPP.Repository.LocationEntityRepository
 {
     public class GovernerateRepository : AppBaseRepository<Governerate>
     {

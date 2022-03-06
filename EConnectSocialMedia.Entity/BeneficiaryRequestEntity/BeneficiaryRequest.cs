@@ -1,6 +1,6 @@
-﻿using EConnectSocialMedia.Entity.LocationEntity;
+﻿using GangstersAPP.Entity.LocationEntity;
 
-namespace EConnectSocialMedia.Entity.BeneficiaryRequestEntity
+namespace GangstersAPP.Entity.BeneficiaryRequestEntity
 {
     public class BeneficiaryRequest : FullBaseEntity
     {

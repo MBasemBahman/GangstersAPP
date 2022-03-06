@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.ChatEntity
+﻿namespace GangstersAPP.Repository.ChatEntity
 {
     public class ChatMemberRepository : AppBaseRepository<ChatMember>
     {

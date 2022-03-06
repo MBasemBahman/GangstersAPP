@@ -1,6 +1,6 @@
-﻿using EConnectSocialMedia.Common;
+﻿using GangstersAPP.Common;
 
-namespace EConnectSocialMedia.Repository.PostEntity
+namespace GangstersAPP.Repository.PostEntity
 {
     public class NotificationRepository : AppBaseRepository<Notification>
     {

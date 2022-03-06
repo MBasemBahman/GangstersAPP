@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Controllers.ChatEntity
+﻿namespace GangstersAPP.API.Controllers.ChatEntity
 {
     [Authorize]
     [ApiController]

@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Controllers.NotificationEntity
+﻿namespace GangstersAPP.API.Controllers.NotificationEntity
 {
     [Authorize]
     [ApiController]

@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Controllers.PostEntity
+﻿namespace GangstersAPP.API.Controllers.PostEntity
 {
     [Authorize]
     [ApiController]

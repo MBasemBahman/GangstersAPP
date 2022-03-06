@@ -1,5 +1,5 @@
 ﻿
-namespace EConnectSocialMedia.Repository
+namespace GangstersAPP.Repository
 {
     public class UnitOfWork
     {

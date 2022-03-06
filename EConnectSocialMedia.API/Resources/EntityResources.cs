@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Resources
+﻿namespace GangstersAPP.API.Resources
 {
     public class EntityResources
     {

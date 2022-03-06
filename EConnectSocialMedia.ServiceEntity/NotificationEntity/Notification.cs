@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.ServiceEntity.NotificationEntity
+﻿namespace GangstersAPP.ServiceEntity.NotificationEntity
 {
     public class NotificationModel : FullImageEntityModel
     {

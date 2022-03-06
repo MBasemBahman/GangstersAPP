@@ -1,22 +1,22 @@
-﻿using EConnectSocialMedia.Entity.AccountEntity;
-using EConnectSocialMedia.Entity.AuthEntity;
-using EConnectSocialMedia.Entity.BeneficiaryRequestEntity;
-using EConnectSocialMedia.Entity.ChatEntity;
-using EConnectSocialMedia.Entity.CHIAEntity;
-using EConnectSocialMedia.Entity.CommonEntity;
-using EConnectSocialMedia.Entity.GroupEntity;
-using EConnectSocialMedia.Entity.LocationEntity;
-using EConnectSocialMedia.Entity.MainDataEntity;
-using EConnectSocialMedia.Entity.NotificationEntity;
-using EConnectSocialMedia.Entity.PostEntity;
-using EConnectSocialMedia.Entity.ServiceProviderRequestEntity;
+﻿using GangstersAPP.Entity.AccountEntity;
+using GangstersAPP.Entity.AuthEntity;
+using GangstersAPP.Entity.BeneficiaryRequestEntity;
+using GangstersAPP.Entity.ChatEntity;
+using GangstersAPP.Entity.CHIAEntity;
+using GangstersAPP.Entity.CommonEntity;
+using GangstersAPP.Entity.GroupEntity;
+using GangstersAPP.Entity.LocationEntity;
+using GangstersAPP.Entity.MainDataEntity;
+using GangstersAPP.Entity.NotificationEntity;
+using GangstersAPP.Entity.PostEntity;
+using GangstersAPP.Entity.ServiceProviderRequestEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using static EConnectSocialMedia.Entity.EntityEnum;
+using static GangstersAPP.Entity.EntityEnum;
 using BC = BCrypt.Net.BCrypt;
 
 
-namespace EConnectSocialMedia.DAL
+namespace GangstersAPP.DAL
 {
     public class DatabaseContext : DbContext
     {

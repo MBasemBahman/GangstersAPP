@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.API.Models.Accounts
+﻿namespace GangstersAPP.API.Models.Accounts
 {
     public class AuthorizedAccount
     {

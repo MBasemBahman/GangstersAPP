@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.BeneficiaryRequestEntityRepository
+﻿namespace GangstersAPP.Repository.BeneficiaryRequestEntityRepository
 {
     public class BeneficiaryTypeRepository : AppBaseRepository<BeneficiaryType>
     {

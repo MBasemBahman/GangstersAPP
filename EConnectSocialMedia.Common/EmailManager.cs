@@ -1,6 +1,6 @@
 ﻿using MimeKit;
 
-namespace EConnectSocialMedia.Common
+namespace GangstersAPP.Common
 {
     public class EmailManager
     {

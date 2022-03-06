@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.AuthEntity
+﻿namespace GangstersAPP.Entity.AuthEntity
 {
     public class AccessLevel : LookUpEntity
     {

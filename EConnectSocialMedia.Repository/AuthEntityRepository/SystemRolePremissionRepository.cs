@@ -1,6 +1,6 @@
-﻿using static EConnectSocialMedia.Entity.EntityEnum;
+﻿using static GangstersAPP.Entity.EntityEnum;
 
-namespace EConnectSocialMedia.Repository.AuthEntityRepository
+namespace GangstersAPP.Repository.AuthEntityRepository
 {
     public class SystemRolePremissionRepository : AppBaseRepository<SystemRolePremission>
     {

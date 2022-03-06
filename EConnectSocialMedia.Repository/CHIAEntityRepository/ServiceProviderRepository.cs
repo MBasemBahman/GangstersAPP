@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Repository.CHIAEntityRepository
+﻿namespace GangstersAPP.Repository.CHIAEntityRepository
 {
     public class ServiceProviderRepository : AppBaseRepository<ServiceProvider>
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace EConnectSocialMedia.Repository.GroupEntity
+namespace GangstersAPP.Repository.GroupEntity
 {
     public class GroupRepository : AppBaseRepository<Group>
     {

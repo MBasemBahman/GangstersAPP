@@ -1,7 +1,7 @@
-﻿using EConnectSocialMedia.Entity.BeneficiaryRequestEntity;
-using EConnectSocialMedia.Entity.ServiceProviderRequestEntity;
+﻿using GangstersAPP.Entity.BeneficiaryRequestEntity;
+using GangstersAPP.Entity.ServiceProviderRequestEntity;
 
-namespace EConnectSocialMedia.Entity.LocationEntity
+namespace GangstersAPP.Entity.LocationEntity
 {
     public class Governerate : FullLookUpEntity
     {

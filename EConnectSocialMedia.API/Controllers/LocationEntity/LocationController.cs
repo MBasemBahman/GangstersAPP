@@ -1,7 +1,7 @@
-﻿using EConnectSocialMedia.Entity.LocationEntity;
-using EConnectSocialMedia.ServiceEntity.LocationEntity;
+﻿using GangstersAPP.Entity.LocationEntity;
+using GangstersAPP.ServiceEntity.LocationEntity;
 
-namespace EConnectSocialMedia.API.Controllers.LocationEntity
+namespace GangstersAPP.API.Controllers.LocationEntity
 {
     [Authorize]
     [ApiController]

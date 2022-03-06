@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace EConnectSocialMedia.Repository
+namespace GangstersAPP.Repository
 {
     public abstract class AppBaseRepository<T> where T : class
     {

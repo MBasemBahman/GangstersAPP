@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.Entity.PostEntity
+﻿namespace GangstersAPP.Entity.PostEntity
 {
     public class PostReaction : BaseEntity
     {

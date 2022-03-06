@@ -1,10 +1,10 @@
-﻿global using EConnectSocialMedia.Entity.AccountEntity;
-global using EConnectSocialMedia.Entity.ChatEntity;
-global using EConnectSocialMedia.Entity.CommonEntity;
-global using EConnectSocialMedia.Entity.GroupEntity;
-global using EConnectSocialMedia.Entity.MainDataEntity;
-global using EConnectSocialMedia.Entity.NotificationEntity;
-global using EConnectSocialMedia.Entity.PostEntity;
+﻿global using GangstersAPP.Entity.AccountEntity;
+global using GangstersAPP.Entity.ChatEntity;
+global using GangstersAPP.Entity.CommonEntity;
+global using GangstersAPP.Entity.GroupEntity;
+global using GangstersAPP.Entity.MainDataEntity;
+global using GangstersAPP.Entity.NotificationEntity;
+global using GangstersAPP.Entity.PostEntity;
 global using Microsoft.EntityFrameworkCore;
 global using System.ComponentModel;
 global using System.ComponentModel.DataAnnotations;

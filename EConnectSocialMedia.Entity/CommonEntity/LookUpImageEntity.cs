@@ -1,6 +1,6 @@
 ﻿
 
-namespace EConnectSocialMedia.Entity.CommonEntity
+namespace GangstersAPP.Entity.CommonEntity
 {
     [Index(nameof(Name), IsUnique = true)]
     public class LookUpImageEntity : FullBaseEntity, ILookUpEntity, IImageEntity

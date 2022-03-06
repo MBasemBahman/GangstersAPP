@@ -1,4 +1,4 @@
-﻿namespace EConnectSocialMedia.ServiceEntity.ServiceProviderRequestEntity
+﻿namespace GangstersAPP.ServiceEntity.ServiceProviderRequestEntity
 {
     public class ServiceProviderRequestAttachmentCreateModel
     {
