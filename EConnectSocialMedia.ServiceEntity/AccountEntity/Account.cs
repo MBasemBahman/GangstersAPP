@@ -97,6 +97,7 @@
         [Phone]
         public string Phone { get; set; }
 
+        [Required(ErrorMessage = "{0} is required")]
         [DisplayName("Email")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
@@ -156,10 +157,11 @@
         [DisplayName("Unique Name")]
         public string UniqueName { get; set; }
 
-        [DisplayName("Email")]
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Required(ErrorMessage = "{0} is required")]
+        [DisplayName("Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [Phone]
+        public string Phone { get; set; }
 
         [DisplayName("Culture")]
         public string Culture { get; set; } = "en";
@@ -182,13 +184,13 @@
         public string About { get; set; }
     }
 
-    public class EditPhoneModel
+    public class EditEmailModel
     {
         [Required(ErrorMessage = "{0} is required")]
-        [DisplayName("Phone")]
-        [DataType(DataType.PhoneNumber)]
-        [Phone]
-        public string Phone { get; set; }
+        [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
+        public string Email { get; set; }
     }
 
     public class SetVerificationCodeModel
@@ -198,7 +200,7 @@
         public string VerificationCode { get; set; }
     }
 
-    public class VerifyPhoneModel : EditPhoneModel
+    public class VerifyEmailModel : EditEmailModel
     {
         [DisplayName("Code")]
         [Required(ErrorMessage = "{0} is required")]
@@ -229,24 +231,20 @@
 
     public class ForgetPasswordModel
     {
-        [Required(ErrorMessage = "The {0} field is required")]
-        [DisplayName("Phone")]
-        [DataType(DataType.PhoneNumber)]
-        [Phone]
-        public string Phone { get; set; }
-
-        [Required(ErrorMessage = "The {0} field is required")]
-        [DisplayName("Code")]
-        public string Code { get; set; }
+        [Required(ErrorMessage = "{0} is required")]
+        [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
+        public string Email { get; set; }
     }
 
     public class ResetPasswordModel
     {
-        [Required(ErrorMessage = "The {0} field is required")]
-        [DisplayName("Phone")]
-        [DataType(DataType.PhoneNumber)]
-        [Phone]
-        public string Phone { get; set; }
+        [Required(ErrorMessage = "{0} is required")]
+        [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
+        public string Email { get; set; }
 
         [DisplayName("Code")]
         [Required(ErrorMessage = "{0} is required")]

@@ -32,8 +32,6 @@ namespace GangstersAPP.Common
                 {
                     string pathToFile = WebRootPath
                           + Path.DirectorySeparatorChar.ToString()
-                          + "wwwroot"
-                          + Path.DirectorySeparatorChar.ToString()
                           + "Templates"
                           + Path.DirectorySeparatorChar.ToString()
                           + "EmailTemplate"
@@ -60,11 +58,11 @@ namespace GangstersAPP.Common
 
                 ToEmails.ForEach(mail => myMessage.To.Add(mail));
 
-                using SmtpClient smtp = new SmtpClient()
+                using SmtpClient smtp = new()
                 {
                     EnableSsl = false,
-                    Host = "mail.gangsters187.com",
-                    Port = 465,
+                    Host = "mail5017.site4now.net",
+                    Port = 587,
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(_email, _epass),
                     DeliveryMethod = SmtpDeliveryMethod.Network

@@ -6,7 +6,6 @@
     [ApiExplorerSettings(GroupName = "Authorization")]
     [Route("api/v{version:apiVersion}/Account/[controller]")]
     [ApiVersion("1.0")]
-    [AllowAll]
     public class AuthorizationController : ControllerBase
     {
         private readonly DatabaseContext _DBContext;
@@ -119,7 +118,7 @@
 
                 returnData = _AccountService.Authenticate(new AuthenticateRequest
                 {
-                    Phone = model.Phone,
+                    Email = model.Email,
                     Password = model.Password,
                 }, IpAddress());
 
@@ -193,6 +192,7 @@
             [FromQuery] string Culture,
             [FromQuery] string UniqueName,
             [FromQuery] string Phone,
+            [FromQuery] string Email,
             [FromQuery] int id = 0)
         {
             AccountModel returnData = new();
@@ -217,7 +217,8 @@
 
                 Account data = await _UnitOfWork.Account.GetFirst(a => (id == 0 || a.Id == id) &&
                                                                        (string.IsNullOrWhiteSpace(UniqueName) || a.UniqueName == UniqueName) &&
-                                                                       (string.IsNullOrWhiteSpace(Phone) || a.Phone == Phone));
+                                                                       (string.IsNullOrWhiteSpace(Phone) || a.Phone == Phone) &&
+                                                                       (string.IsNullOrWhiteSpace(Email) || a.Email == Email));
 
                 _Mapper.Map(data, returnData);
 
@@ -249,13 +250,13 @@
         }
 
         /// <summary>
-        /// Post: Edit Phone
+        /// Post: Edit Email
         /// </summary>
         [HttpPost]
-        [Route(nameof(EditPhone))]
-        public async Task<bool> EditPhone(
+        [Route(nameof(EditEmail))]
+        public async Task<bool> EditEmail(
             [FromQuery] string Culture,
-            [FromBody] EditPhoneModel model)
+            [FromBody] EditEmailModel model)
         {
             bool returnData = default;
 
@@ -270,14 +271,14 @@
 
                 AuthorizedAccount account = (AuthorizedAccount)Request.HttpContext.Items["Account"];
 
-                if (account.Phone == model.Phone)
+                if (account.Email == model.Email)
                 {
-                    throw new AppException("Phone already registered in your profile!");
+                    throw new AppException("Email already registered in your profile!");
                 }
 
                 Account data = await _UnitOfWork.Account.GetByID(account.Id);
 
-                data.Phone = model.Phone;
+                data.Email = model.Email;
                 data.LastModifiedBy = data.FullName;
                 data.LastModifiedAt = DateTime.UtcNow;
 
@@ -346,14 +347,14 @@
         }
 
         /// <summary>
-        /// Post: Verify Phone
+        /// Post: Verify Email
         /// </summary>
         [HttpPost]
-        [Route(nameof(VerifyPhone))]
+        [Route(nameof(VerifyEmail))]
         [AllowAnonymous]
-        public async Task<bool> VerifyPhone(
+        public async Task<bool> VerifyEmail(
             [FromQuery] string Culture,
-            [FromBody] VerifyPhoneModel model)
+            [FromBody] VerifyEmailModel model)
         {
             bool returnData = false;
             Status Status = new();
@@ -593,14 +594,14 @@
         }
 
         /// <summary>
-        /// Post: Check phone if existing
+        /// Post: Check Email if existing
         /// </summary>
         [HttpPost]
         [AllowAnonymous]
-        [Route(nameof(CheckPhone))]
-        public void CheckPhone(
+        [Route(nameof(CheckEmail))]
+        public void CheckEmail(
             [FromQuery] string Culture,
-            [FromBody] EditPhoneModel model)
+            [FromBody] EditEmailModel model)
         {
             Status Status = new();
 
@@ -611,9 +612,9 @@
                     throw new AppException("Complete your info!");
                 }
 
-                if (!_UnitOfWork.Account.Any(a => a.Phone == model.Phone))
+                if (!_UnitOfWork.Account.Any(a => a.Email == model.Email))
                 {
-                    throw new AppException("Phone not registered, register now!");
+                    throw new AppException("Email not registered, register now!");
                 }
 
                 Status = new Status(true);
@@ -645,18 +646,23 @@
                     throw new AppException("Complete your info!");
                 }
 
-                if (!_UnitOfWork.Account.Any(a => a.Phone == model.Phone))
+                if (!_UnitOfWork.Account.Any(a => a.Email == model.Email))
                 {
-                    throw new AppException("Phone not registered, register now!");
+                    throw new AppException("Email not registered, register now!");
                 }
 
-                Account data = await _UnitOfWork.Account.GetFirst(a => a.Phone == model.Phone);
+                Account data = await _UnitOfWork.Account.GetFirst(a => a.Email == model.Email);
 
-                data.VerificationCodeHash = model.Code;
+                string code = RandomGenerator.RandomNumber(0000, 9999).ToString();
+
+                data.VerificationCodeHash = code;
                 data.VerificationAt = DateTime.UtcNow;
 
                 _UnitOfWork.Account.UpdateEntity(data);
                 await _UnitOfWork.Save();
+
+                EmailManager emailManager = new(_Environment.WebRootPath);
+                await emailManager.SendMail(model.Email, "Forget Password", code, true);
 
                 Status = new Status(true);
             }
@@ -689,9 +695,9 @@
                     throw new AppException("Complete your info!");
                 }
 
-                if (_UnitOfWork.Account.Any(a => a.Phone == model.Phone))
+                if (_UnitOfWork.Account.Any(a => a.Email == model.Email))
                 {
-                    Account account = await _UnitOfWork.Account.GetFirst(a => a.Phone == model.Phone);
+                    Account account = await _UnitOfWork.Account.GetFirst(a => a.Phone == model.Email);
 
                     if (!string.IsNullOrEmpty(account.VerificationCodeHash) &&
                     string.Equals(model.Code, account.VerificationCodeHash))
@@ -706,7 +712,7 @@
 
                         returnData = _AccountService.Authenticate(new AuthenticateRequest
                         {
-                            Phone = account.Phone,
+                            Email = account.Email,
                             Password = model.NewPassword
                         }, IpAddress());
 

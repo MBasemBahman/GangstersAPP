@@ -28,11 +28,11 @@
         {
             Account account = null;
 
-            if (!string.IsNullOrEmpty(model.Phone) &&
+            if (!string.IsNullOrEmpty(model.Email) &&
                 !string.IsNullOrEmpty(model.Password))
             {
                 account = _context.Account
-                                  .Where(x => x.Phone == model.Phone)
+                                  .Where(x => x.Email == model.Email)
                                   .Include(a => a.RefreshTokens)
                                   .FirstOrDefault();
 

@@ -41,7 +41,6 @@
         /// </summary>
         [HttpGet]
         [Route(nameof(GetNotifications))]
-        [AllowAll]
         public List<NotificationModel> GetNotifications(
             [FromQuery] string Culture,
             [FromQuery] Paging paging)

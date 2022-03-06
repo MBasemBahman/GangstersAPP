@@ -3,7 +3,7 @@ using GangstersAPP.Entity.ServiceProviderRequestEntity;
 
 namespace GangstersAPP.Entity.AccountEntity
 {
-    [Index(nameof(Phone), IsUnique = true)]
+    [Index(nameof(Email), IsUnique = true)]
     public class Account : FullImageEntity
     {
         [DisplayName("First Name")]
@@ -28,6 +28,7 @@ namespace GangstersAPP.Entity.AccountEntity
         [Phone]
         public string Phone { get; set; }
 
+        [Required(ErrorMessage = "{0} is required")]
         [DisplayName("Email")]
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
