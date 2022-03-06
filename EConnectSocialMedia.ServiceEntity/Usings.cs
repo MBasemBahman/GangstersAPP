@@ -1,0 +1,9 @@
+﻿global using EConnectSocialMedia.ServiceEntity.AccountEntity;
+global using EConnectSocialMedia.ServiceEntity.CommonEntity;
+global using EConnectSocialMedia.ServiceEntity.GroupEntity;
+global using EConnectSocialMedia.ServiceEntity.LocationEntity;
+global using EConnectSocialMedia.ServiceEntity.PostEntity;
+global using Microsoft.AspNetCore.Http;
+global using System.ComponentModel;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;

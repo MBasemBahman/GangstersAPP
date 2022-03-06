@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EConnectSocialMedia.Common\EConnectSocialMedia.Common.csproj" />
+    <ProjectReference Include="..\EConnectSocialMedia.Repository\EConnectSocialMedia.Repository.csproj" />
+    <ProjectReference Include="..\EConnectSocialMedia.ServiceEntity\EConnectSocialMedia.ServiceEntity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Uploud\Account\" />
+    <Folder Include="wwwroot\Uploud\Group\" />
+    <Folder Include="wwwroot\Uploud\Message\" />
+    <Folder Include="wwwroot\Uploud\BeneficiaryRequestAttachment\" />
+    <Folder Include="wwwroot\Uploud\ServiceProviderRequestAttachment\" />
+    <Folder Include="wwwroot\Uploud\PostComment\" />
+    <Folder Include="wwwroot\Uploud\PostAttachment\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EConnectSocialMedia.Common\EConnectSocialMedia.Common.csproj" />
+    <ProjectReference Include="..\EConnectSocialMedia.DAL\EConnectSocialMedia.DAL.csproj" />
+    <ProjectReference Include="..\EConnectSocialMedia.Entity\EConnectSocialMedia.Entity.csproj" />
+    <ProjectReference Include="..\EConnectSocialMedia.ServiceEntity\EConnectSocialMedia.ServiceEntity.csproj" />
+  </ItemGroup>
+
+</Project>
