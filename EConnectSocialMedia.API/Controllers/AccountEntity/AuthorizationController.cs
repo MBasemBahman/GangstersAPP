@@ -250,6 +250,47 @@
         }
 
         /// <summary>
+        /// Post: Check Email if existing
+        /// </summary>
+        [HttpPost]
+        [AllowAnonymous]
+        [Route(nameof(CheckEmail))]
+        public async Task<string> CheckEmail(
+            [FromQuery] string Culture,
+            [FromBody] EditEmailModel model)
+        {
+            Status Status = new();
+            string returnData = "";
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    throw new AppException("Complete your info!");
+                }
+
+                if (!_UnitOfWork.Account.Any(a => a.Email == model.Email))
+                {
+                    throw new AppException("Email not registered, register now!");
+                }
+
+                returnData = RandomGenerator.RandomNumber(0000, 9999).ToString();
+
+                EmailManager emailManager = new(_Environment.WebRootPath);
+                await emailManager.SendMail(model.Email, "Verify Your E-mail Address", returnData, true);
+
+                Status = new Status(true);
+            }
+            catch (Exception ex)
+            {
+                Status = _StatusHandler.SetException(Status, ex);
+            }
+
+            Response.Headers.Add("X-Status", _StatusHandler.GetStatus(Status));
+
+            return returnData;
+        }
+
+        /// <summary>
         /// Post: Edit Email
         /// </summary>
         [HttpPost]
@@ -300,63 +341,15 @@
         }
 
         /// <summary>
-        /// Post: Set Verification Code
+        /// Post: Send Phone Code if you out from app
         /// </summary>
         [HttpPost]
-        [Route(nameof(SetVerificationCode))]
         [AllowAnonymous]
-        public async Task<bool> SetVerificationCode(
+        [Route(nameof(ForgetPassword))]
+        public async Task ForgetPassword(
             [FromQuery] string Culture,
-            [FromBody] SetVerificationCodeModel model)
+            [FromBody] ForgetPasswordModel model)
         {
-            bool returnData = default;
-
-            Status Status = new();
-
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    throw new AppException("Complete your profile!");
-                }
-
-                AuthorizedAccount account = (AuthorizedAccount)Request.HttpContext.Items["Account"];
-
-                Account data = await _UnitOfWork.Account.GetByID(account.Id);
-
-                data.VerificationCodeHash = BC.HashPassword(model.VerificationCode);
-                data.VerificationAt = DateTime.UtcNow;
-
-                data.LastModifiedBy = data.FullName;
-
-                _UnitOfWork.Account.UpdateEntity(data);
-                await _UnitOfWork.Save();
-
-                returnData = true;
-
-                Status = new Status(true);
-            }
-            catch (Exception ex)
-            {
-                Status = _StatusHandler.SetException(Status, ex);
-            }
-
-            Response.Headers.Add("X-Status", _StatusHandler.GetStatus(Status));
-
-            return returnData;
-        }
-
-        /// <summary>
-        /// Post: Verify Email
-        /// </summary>
-        [HttpPost]
-        [Route(nameof(VerifyEmail))]
-        [AllowAnonymous]
-        public async Task<bool> VerifyEmail(
-            [FromQuery] string Culture,
-            [FromBody] VerifyEmailModel model)
-        {
-            bool returnData = false;
             Status Status = new();
 
             try
@@ -366,31 +359,89 @@
                     throw new AppException("Complete your info!");
                 }
 
-                AuthorizedAccount account = (AuthorizedAccount)Request.HttpContext.Items["Account"];
-
-                Account data = await _UnitOfWork.Account.GetByID(account.Id);
-
-                if (data.VerificationAt.AddMinutes(30) < DateTime.UtcNow)
+                if (!_UnitOfWork.Account.Any(a => a.Email == model.Email))
                 {
-                    throw new AppException("Verification code is Expired");
+                    throw new AppException("Email not registered, register now!");
                 }
 
-                if (!string.IsNullOrEmpty(data.VerificationCodeHash) &&
-                    BC.Verify(model.Code, data.VerificationCodeHash))
+                Account data = await _UnitOfWork.Account.GetFirst(a => a.Email == model.Email);
+
+                string code = RandomGenerator.RandomNumber(0000, 9999).ToString();
+
+                data.VerificationCodeHash = code;
+                data.VerificationAt = DateTime.UtcNow;
+
+                _UnitOfWork.Account.UpdateEntity(data);
+                await _UnitOfWork.Save();
+
+                EmailManager emailManager = new(_Environment.WebRootPath);
+                await emailManager.SendMail(model.Email, "Forget Password", code, true);
+
+                Status = new Status(true);
+            }
+            catch (Exception ex)
+            {
+                Status = _StatusHandler.SetException(Status, ex);
+            }
+
+            Response.Headers.Add("X-Status", _StatusHandler.GetStatus(Status));
+        }
+
+        /// <summary>
+        /// Post: Reset Password
+        /// </summary>
+        [HttpPost]
+        [AllowAnonymous]
+        [Route(nameof(ResetPassword))]
+        public async Task<AuthenticateResponse> ResetPassword(
+            [FromQuery] string Culture,
+            [FromBody] ResetPasswordModel model)
+        {
+            AuthenticateResponse returnData = new();
+
+            Status Status = new();
+
+            try
+            {
+                if (!ModelState.IsValid)
                 {
-                    data.IsVerified = true;
-                    data.LastModifiedBy = data.FullName;
+                    throw new AppException("Complete your info!");
+                }
 
-                    _UnitOfWork.Account.UpdateEntity(data);
-                    await _UnitOfWork.Save();
+                if (_UnitOfWork.Account.Any(a => a.Email == model.Email))
+                {
+                    Account account = await _UnitOfWork.Account.GetFirst(a => a.Phone == model.Email);
 
-                    returnData = true;
+                    if (!string.IsNullOrEmpty(account.VerificationCodeHash) &&
+                    string.Equals(model.Code, account.VerificationCodeHash))
+                    {
+                        account.VerificationCodeHash = null;
 
-                    Status = new Status(true);
+                        account.PasswordHash = BC.HashPassword(model.NewPassword);
+                        account.LastModifiedAt = DateTime.UtcNow;
+
+                        _UnitOfWork.Account.UpdateEntity(account);
+                        await _UnitOfWork.Save();
+
+                        returnData = _AccountService.Authenticate(new AuthenticateRequest
+                        {
+                            Email = account.Email,
+                            Password = model.NewPassword
+                        }, IpAddress());
+
+                        SetJwtTokenHeader(returnData.JwtToken);
+                        SetRefresh(returnData.RefreshToken);
+
+                        Status = new Status(true);
+                    }
+                    else
+                    {
+                        throw new AppException("Code is wrong!");
+                    }
                 }
                 else
                 {
-                    throw new AppException("Verification code is wrong!");
+                    throw new AppException("The phone not found!");
                 }
             }
             catch (Exception ex)
@@ -582,154 +633,6 @@
 
                 returnData = true;
                 Status = new Status(true);
-            }
-            catch (Exception ex)
-            {
-                Status = _StatusHandler.SetException(Status, ex);
-            }
-
-            Response.Headers.Add("X-Status", _StatusHandler.GetStatus(Status));
-
-            return returnData;
-        }
-
-        /// <summary>
-        /// Post: Check Email if existing
-        /// </summary>
-        [HttpPost]
-        [AllowAnonymous]
-        [Route(nameof(CheckEmail))]
-        public void CheckEmail(
-            [FromQuery] string Culture,
-            [FromBody] EditEmailModel model)
-        {
-            Status Status = new();
-
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    throw new AppException("Complete your info!");
-                }
-
-                if (!_UnitOfWork.Account.Any(a => a.Email == model.Email))
-                {
-                    throw new AppException("Email not registered, register now!");
-                }
-
-                Status = new Status(true);
-            }
-            catch (Exception ex)
-            {
-                Status = _StatusHandler.SetException(Status, ex);
-            }
-
-            Response.Headers.Add("X-Status", _StatusHandler.GetStatus(Status));
-        }
-
-        /// <summary>
-        /// Post: Send Phone Code if you out from app
-        /// </summary>
-        [HttpPost]
-        [AllowAnonymous]
-        [Route(nameof(ForgetPassword))]
-        public async Task ForgetPassword(
-            [FromQuery] string Culture,
-            [FromBody] ForgetPasswordModel model)
-        {
-            Status Status = new();
-
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    throw new AppException("Complete your info!");
-                }
-
-                if (!_UnitOfWork.Account.Any(a => a.Email == model.Email))
-                {
-                    throw new AppException("Email not registered, register now!");
-                }
-
-                Account data = await _UnitOfWork.Account.GetFirst(a => a.Email == model.Email);
-
-                string code = RandomGenerator.RandomNumber(0000, 9999).ToString();
-
-                data.VerificationCodeHash = code;
-                data.VerificationAt = DateTime.UtcNow;
-
-                _UnitOfWork.Account.UpdateEntity(data);
-                await _UnitOfWork.Save();
-
-                EmailManager emailManager = new(_Environment.WebRootPath);
-                await emailManager.SendMail(model.Email, "Forget Password", code, true);
-
-                Status = new Status(true);
-            }
-            catch (Exception ex)
-            {
-                Status = _StatusHandler.SetException(Status, ex);
-            }
-
-            Response.Headers.Add("X-Status", _StatusHandler.GetStatus(Status));
-        }
-
-        /// <summary>
-        /// Post: Reset Password
-        /// </summary>
-        [HttpPost]
-        [AllowAnonymous]
-        [Route(nameof(ResetPassword))]
-        public async Task<AuthenticateResponse> ResetPassword(
-            [FromQuery] string Culture,
-            [FromBody] ResetPasswordModel model)
-        {
-            AuthenticateResponse returnData = new();
-
-            Status Status = new();
-
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    throw new AppException("Complete your info!");
-                }
-
-                if (_UnitOfWork.Account.Any(a => a.Email == model.Email))
-                {
-                    Account account = await _UnitOfWork.Account.GetFirst(a => a.Phone == model.Email);
-
-                    if (!string.IsNullOrEmpty(account.VerificationCodeHash) &&
-                    string.Equals(model.Code, account.VerificationCodeHash))
-                    {
-                        account.VerificationCodeHash = null;
-
-                        account.PasswordHash = BC.HashPassword(model.NewPassword);
-                        account.LastModifiedAt = DateTime.UtcNow;
-
-                        _UnitOfWork.Account.UpdateEntity(account);
-                        await _UnitOfWork.Save();
-
-                        returnData = _AccountService.Authenticate(new AuthenticateRequest
-                        {
-                            Email = account.Email,
-                            Password = model.NewPassword
-                        }, IpAddress());
-
-                        SetJwtTokenHeader(returnData.JwtToken);
-                        SetRefresh(returnData.RefreshToken);
-
-                        Status = new Status(true);
-                    }
-                    else
-                    {
-                        throw new AppException("Code is wrong!");
-                    }
-                }
-                else
-                {
-                    throw new AppException("The phone not found!");
-                }
             }
             catch (Exception ex)
             {
