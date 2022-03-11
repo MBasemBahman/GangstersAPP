@@ -268,7 +268,7 @@
                     throw new AppException("Complete your info!");
                 }
 
-                returnData = RandomGenerator.RandomNumber(0000, 9999).ToString();
+                returnData = RandomGenerator.RandomNumber(000000, 999999).ToString();
 
                 EmailManager emailManager = new(_Environment.WebRootPath);
                 await emailManager.SendMail(model.Email, "Verify Your E-mail Address", returnData, true);
@@ -361,7 +361,7 @@
 
                 Account data = await _UnitOfWork.Account.GetFirst(a => a.Email == model.Email);
 
-                string code = RandomGenerator.RandomNumber(0000, 9999).ToString();
+                string code = RandomGenerator.RandomNumber(000000, 999999).ToString();
 
                 data.VerificationCodeHash = code;
                 data.VerificationAt = DateTime.UtcNow;
