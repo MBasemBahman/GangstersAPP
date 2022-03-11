@@ -91,7 +91,6 @@
         [DisplayName("Nick Name")]
         public string NickName { get; set; }
 
-        [Required(ErrorMessage = "{0} is required")]
         [DisplayName("Phone")]
         [DataType(DataType.PhoneNumber)]
         [Phone]
@@ -157,7 +156,6 @@
         [DisplayName("Unique Name")]
         public string UniqueName { get; set; }
 
-        [Required(ErrorMessage = "{0} is required")]
         [DisplayName("Phone")]
         [DataType(DataType.PhoneNumber)]
         [Phone]

@@ -268,11 +268,6 @@
                     throw new AppException("Complete your info!");
                 }
 
-                if (!_UnitOfWork.Account.Any(a => a.Email == model.Email))
-                {
-                    throw new AppException("Email not registered, register now!");
-                }
-
                 returnData = RandomGenerator.RandomNumber(0000, 9999).ToString();
 
                 EmailManager emailManager = new(_Environment.WebRootPath);

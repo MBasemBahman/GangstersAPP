@@ -22,7 +22,6 @@ namespace GangstersAPP.Entity.AccountEntity
         [DisplayName("Unique Name")]
         public string UniqueName { get; set; }
 
-        [Required(ErrorMessage = "{0} is required")]
         [DisplayName("Phone")]
         [DataType(DataType.PhoneNumber)]
         [Phone]
