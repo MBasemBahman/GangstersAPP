@@ -95,9 +95,9 @@
                     throw new AppException("Complete your profile!");
                 }
 
-                if (_UnitOfWork.Account.Any(a => a.Phone == model.Phone))
+                if (_UnitOfWork.Account.Any(a => a.Email == model.Email))
                 {
-                    throw new AppException("Phone already registered!");
+                    throw new AppException("Email already registered!");
                 }
 
                 Account account = new();
@@ -210,7 +210,8 @@
 
                 if (id == 0 &&
                     string.IsNullOrWhiteSpace(UniqueName) &&
-                    string.IsNullOrWhiteSpace(Phone))
+                    string.IsNullOrWhiteSpace(Phone) &&
+                    string.IsNullOrWhiteSpace(Email))
                 {
                     id = account.Id;
                 }
@@ -336,7 +337,7 @@
         }
 
         /// <summary>
-        /// Post: Send Phone Code if you out from app
+        /// Post: Send Email Code if you out from app
         /// </summary>
         [HttpPost]
         [AllowAnonymous]
@@ -405,7 +406,7 @@
 
                 if (_UnitOfWork.Account.Any(a => a.Email == model.Email))
                 {
-                    Account account = await _UnitOfWork.Account.GetFirst(a => a.Phone == model.Email);
+                    Account account = await _UnitOfWork.Account.GetFirst(a => a.Email == model.Email);
 
                     if (!string.IsNullOrEmpty(account.VerificationCodeHash) &&
                     string.Equals(model.Code, account.VerificationCodeHash))
@@ -436,7 +437,7 @@
                 }
                 else
                 {
-                    throw new AppException("The phone not found!");
+                    throw new AppException("The email not found!");
                 }
             }
             catch (Exception ex)
