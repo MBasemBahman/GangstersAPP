@@ -19,7 +19,6 @@ namespace GangstersAPP.Entity.NotificationEntity
         public bool IsPublic { get; set; }
 
         public ICollection<NotificationAccount> NotificationAccounts { get; set; }
-
     }
 
 }

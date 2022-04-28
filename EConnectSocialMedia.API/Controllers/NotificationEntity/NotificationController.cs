@@ -53,11 +53,6 @@
             {
                 AuthorizedAccount account = (AuthorizedAccount)Request.HttpContext.Items["Account"];
 
-                account = new AuthorizedAccount
-                {
-                    Id = 9,
-                };
-
                 IQueryable<Notification> Data = _UnitOfWork.Notification.GetQuery(a => a.IsActive &&
                                                                                        (a.IsPublic ||
                                                                                         a.NotificationAccounts.Any(b => b.Fk_Account == account.Id)))

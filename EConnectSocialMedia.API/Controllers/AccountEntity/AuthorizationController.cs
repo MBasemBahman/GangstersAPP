@@ -42,6 +42,7 @@
         [HttpPost]
         [AllowAnonymous]
         [Route(nameof(Login))]
+        [AllowAll]
         public AuthenticateResponse Login(
             [FromQuery] string Culture,
             [FromBody] AuthenticateRequest model)

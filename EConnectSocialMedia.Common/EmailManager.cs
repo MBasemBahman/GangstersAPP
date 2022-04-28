@@ -24,8 +24,8 @@ namespace GangstersAPP.Common
         {
             try
             {
-                string _email = "support@gangsters187.com";
-                string _epass = "Password123!";
+                string _email = "gangsters1871@gmail.com";
+                string _epass = "Asdqwe@123@";
                 string _dispName = "Gangsters App";
 
                 if (WithTemplate)
@@ -60,8 +60,8 @@ namespace GangstersAPP.Common
 
                 using SmtpClient smtp = new()
                 {
-                    EnableSsl = false,
-                    Host = "mail5017.site4now.net",
+                    EnableSsl = true,
+                    Host = "smtp.gmail.com",
                     Port = 587,
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(_email, _epass),
@@ -71,7 +71,7 @@ namespace GangstersAPP.Common
                 smtp.SendCompleted += (s, e) => { smtp.Dispose(); };
                 await smtp.SendMailAsync(myMessage);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
