@@ -37,23 +37,11 @@
 
         public static Message CreateMessage(FirebaseNotificationModel Model)
         {
-            Dictionary<string, object> Extra = new()
-            {
-                { "OpenType", Model.OpenType.ToString() },
-                { "OpenValue", Model.OpenType.ToString() },
-            };
-
-            Dictionary<string, string> data = new()
-            {
-                { "Extra", JsonConvert.SerializeObject(Extra) },
-                { "Title", Model.MessageHeading },
-                { "Body", Model.MessageContent },
-                { "ImgUrl", Model.ImgUrl },
-            };
-
             // [START apns_message]
             Message message = new()
             {
+                Topic = Model.Topic,
+                Data = CreateData(Model),
                 Apns = new ApnsConfig()
                 {
                     Aps = new Aps()
@@ -62,17 +50,83 @@
                         {
                             Title = Model.MessageHeading,
                             Body = Model.MessageContent,
-                        }
+                        },
+                        ContentAvailable = true
                     },
+                    FcmOptions = new()
+                    {
+                        ImageUrl = Model.ImgUrl
+                    },
+                    Headers = new Dictionary<string, string>
+                    {
+                        {"apns-priority", "5" },
+                    }
                 },
-                Data = data,
-                Topic = Model.Topic
+                Android = new AndroidConfig
+                {
+                    Priority = Priority.High,
+                    Notification = new AndroidNotification
+                    {
+                        Body = Model.MessageContent,
+                        Title = Model.MessageHeading,
+                        ImageUrl = Model.ImgUrl,
+                    }
+                },
             };
             // [END apns_message]
             return message;
         }
 
         public static MulticastMessage CreateMulticastMessage(FirebaseNotificationModel Model)
+        {
+            // [START apns_message]
+            MulticastMessage message = new()
+            {
+                Tokens = Model.RegistrationTokens.Where(a => !string.IsNullOrEmpty(a)).ToList(),
+                Notification = new Notification()
+                {
+                    ImageUrl = Model.ImgUrl,
+                    Title = Model.MessageHeading,
+                    Body = Model.MessageContent
+                },
+                Apns = new ApnsConfig()
+                {
+                    Aps = new Aps()
+                    {
+                        Alert = new ApsAlert()
+                        {
+                            Title = Model.MessageHeading,
+                            Body = Model.MessageContent,
+                        },
+                        ContentAvailable = true
+                    },
+                    FcmOptions = new()
+                    {
+                        ImageUrl = Model.ImgUrl
+                    },
+                    Headers = new Dictionary<string, string>
+                    {
+                        {"apns-priority", "5" },
+                        {"apns-push-type", "background" }
+                    },
+                },
+                Android = new AndroidConfig
+                {
+                    Priority = Priority.High,
+                    Notification = new AndroidNotification
+                    {
+                        Body = Model.MessageContent,
+                        Title = Model.MessageHeading,
+                        ImageUrl = Model.ImgUrl,
+                    }
+                },
+                Data = CreateData(Model),
+            };
+            // [END apns_message]
+            return message;
+        }
+
+        public static Dictionary<string, string> CreateData(FirebaseNotificationModel Model)
         {
             Dictionary<string, object> Extra = new()
             {
@@ -88,25 +142,7 @@
                 { "ImgUrl", Model.ImgUrl },
             };
 
-            // [START apns_message]
-            MulticastMessage message = new()
-            {
-                Apns = new ApnsConfig()
-                {
-                    Aps = new Aps()
-                    {
-                        Alert = new ApsAlert()
-                        {
-                            Title = Model.MessageHeading,
-                            Body = Model.MessageContent,
-                        }
-                    },
-                },
-                Data = data,
-                Tokens = Model.RegistrationTokens
-            };
-            // [END apns_message]
-            return message;
+            return data;
         }
     }
 
