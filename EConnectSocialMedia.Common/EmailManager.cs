@@ -24,10 +24,6 @@ namespace GangstersAPP.Common
         {
             try
             {
-                string _email = "gangsters1871@gmail.com";
-                string _epass = "Asdqwe@123@";
-                string _dispName = "Gangsters App";
-
                 if (WithTemplate)
                 {
                     string pathToFile = WebRootPath
